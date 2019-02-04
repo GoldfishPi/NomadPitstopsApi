@@ -26,6 +26,11 @@ const BlogSchema = mongoose.Schema({
     },
     thumbnail: {
         type: String
+    },
+    active: {
+        type: Boolean,
+        require: true,
+        default: false
     }
 });
 

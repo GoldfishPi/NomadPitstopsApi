@@ -4,6 +4,8 @@ const pitstops = require('./pitstop');
 const blog = require('./blog');
 const user = require('./user');
 
+const access = require('../middleware/access');
+
 /* GET api listing. */
 router.get('/', (req, res) => {
     res.send('api works');

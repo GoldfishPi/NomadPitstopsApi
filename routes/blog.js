@@ -13,7 +13,7 @@ const access = require('../middleware/access');
 
 //routes
 router.post('/', access.ADMIN, addPost);
-router.get('/', getPosts);
+router.get('/', access.ANY, getPosts);
 router.post('/:id', access.ADMIN, updatePost);
 router.get('/:id', getPost);
 
@@ -31,7 +31,8 @@ function addPost(req, res, next) {
             body: req.body.body,
             dateCreated: moment().unix(),
             snippet: req.body.snippet,
-            thumbnail: req.body.thumbnail
+            thumbnail: req.body.thumbnail,
+            active: false
         });
         blog.save().then(model => {
             if (!model.errors) {
@@ -47,16 +48,23 @@ function addPost(req, res, next) {
 }
 
 function getPosts(req, res, next) {
-    model.find({}, function(err, posts) {
+    const query = {};
+    console.log('req access', req.access);
+    if (req.access < 2) {
+        query.active = true;
+    }
+    model.find(query, function(err, posts) {
         res.json({
             posts: posts.map(post => {
+                console.log('post activive', post.active);
                 return {
                     id: post.id,
                     name: post.name,
                     title: post.title,
                     dateCreated: post.dateCreated,
                     snippet: post.snippet,
-                    thumbnail: post.thumbnail
+                    thumbnail: post.thumbnail,
+                    active: post.active
                 };
             })
         });
