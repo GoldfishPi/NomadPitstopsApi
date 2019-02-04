@@ -14,7 +14,7 @@ function applyAccess(req, level) {
         });
     } catch (err) {
         req.access = 0;
-        return Promise.resolve;
+        return Promise.resolve();
     }
 }
 
