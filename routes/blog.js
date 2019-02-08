@@ -96,7 +96,8 @@ function getPost(req, res, next) {
             body: post.body,
             dateCreated: post.dateCreated,
             snippet: post.snippet,
-            thumbnail: post.thumbnail
+            thumbnail: post.thumbnail,
+            active: post.active
         });
     });
 }
