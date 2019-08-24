@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const config = require('../config.json');
+const config = require('./../config.json');
 const user = require('../models/user');
 
 function applyAccess(req, level) {

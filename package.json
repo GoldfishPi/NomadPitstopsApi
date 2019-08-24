@@ -2,9 +2,10 @@
   "name": "api",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "./.dist/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node ./.dist/index.js"
   },
   "author": "",
   "license": "ISC",
@@ -20,6 +21,7 @@
     "jsonwebtoken": "^8.4.0",
     "marked": "^0.6.0",
     "moment": "^2.23.0",
-    "mongoose": "^5.4.3"
+    "mongoose": "^5.4.3",
+    "typescript": "^3.5.3"
   }
 }
