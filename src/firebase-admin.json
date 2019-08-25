@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "nomad-pit-stops",
+  "private_key_id": "cd2c4fcc3a14921f2e57a8e9c063664f215fdfc3",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCcyPCp9KMeUDg1\njjOuXxPn5lNcCfilC4gwgHhMBrp2qSgNPeVWXzDafKLl4xsAuzgSr3upqLtzE1Lx\npkmUuouf7b/iU60o+zRnfm3DT02GgAMTmWQYdk3e+ehXOlvNt34EtwQDpIeB9eOt\nC/I8yrZL1s7BqWrz46u6+VE072mzOp3BOPyVvzGUIQ4JE/rBVEPP3cVuicyUpa9p\nG1NPS1Ga+UrjH/7TT4Ii7J/17hef0agN4KoLvSSboU5iUfnIo9h/1fsqLxzKYoYx\npM4NK9ntEm4gRrTXZVe9j4/ViIm+M8IGG0q5Li7TD/IyJFwLrg++HbbU2H1W+ZQp\nlzKoHXVLAgMBAAECggEAO1WITql4eeZd/1ablGgC/oYaEgDsCnn8xm44GH2LX5DQ\nyYIdIrzPnkAA3gM+mt4/cELdB+4FUp2DjFQkEJcwdAvjzGFibNn0kR41p+6BJl+X\nynkIeoF7IuFs3mYFjCrfFCW27TH83mASE9ErkXod10Gp6XyWL0qAGTh1VRUt6Vez\nixxey7g5ocA70gmxU+u+vRn6mLtGOeGfTRjZsXWbU37sVqhnu7w6qi/N+6ydhOfQ\nGicfv89AaF4p9SHrw00Tb/8qlc0dzOpFdy8fg/6msytIyC/1NxmToXn7B/WJhH+o\n5Ag1qY/YGjq2U7NoDgWVPfhjDEgI8x0x7K0w2bjYQQKBgQDXDd86vsE8VArKCh/4\nwGtxtq17fRSYNHUCaNcbe4SO39rEdVM05TC1mxRFUVkCqpRsgACYxu1cLpWaMHtJ\nyov2GkdueCx1plhIVsg/qlIBMGRkgk4dGzy4/asvucvGeQS76YuvIuPYxH/w46ck\n8aTqm3mQPpb+KDEDVa/bCozN2wKBgQC6outWCd4h5whGE/5weIxPdSXjPAYCQxWZ\nlrb3lNy85ekfQc0NmRxb3/Jc9dmAs4mvjORx5DCT+YoZxJgwu8HQYm71g1anx8iS\nG03xllWJCMrlzloOjEyC+SP5CTbak44NXFE/NbRdV+E7RO8WWKv9EiagtPubGf50\nht8MZtzpUQKBgQC0HEIhiTF9vUVsAR7VzxItormY+yEMeKKm6fd+ZOyYXJN0hm6x\nlmI9Nyy7AW5y9TppxKq7SZ/x3HIfOQuIucKO02OP+cYCota9fzEnYRZdOJJcO2YA\nqpcouAtvZURtbV2xo+ABRk9ddPVSYtfR8TAV7TDaxhDfu/mQuWsXILbckQKBgCbu\nq1bUUiESV5h+vTnq+6Hrlw6yy7IXGl9ioCI/TFifQSUDDepDQTYtHhqkMk31pcgY\nBON5LWUAzf0YFIM9920ny2utjRsMwtsvlO/LY2ZljiWoCQM14xQDMqzVbjrkQuKo\nmk4sPsal+Vbqx1ELCD2PVr15Y270Wi8mn0qv/m8xAoGAJ1oZy3yNtpi9WIu7aD31\n0W1hMPlex2tM6WvuWCoDEtA8dnWc4Pc1i0fHnZp1fT28tQzz+f+qRRgpz7DB1VV9\nCWGvRsUOR+OrHzLL/ds8jDyyGOXcF51R1YtQm+oN9jJHjWcBwx03w4alBqALHw9L\nEPGKtUS3q81O0T5jb9sYPb4=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-g19py@nomad-pit-stops.iam.gserviceaccount.com",
+  "client_id": "100054604079919060854",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-g19py%40nomad-pit-stops.iam.gserviceaccount.com"
+}

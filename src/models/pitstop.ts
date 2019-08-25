@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+import { Schema, model } from "mongoose";
 
-const PitstopSchema = mongoose.Schema({
+const PitstopSchema = new Schema({
     name: {
         type: String,
         require: true,
@@ -21,10 +21,6 @@ const PitstopSchema = mongoose.Schema({
         type: Number,
         require: true
     },
-    id: {
-        type: Number,
-        require: true,
-    },
     loc: {
         type: { type: String },
         coordinates: [Number],
@@ -33,5 +29,5 @@ const PitstopSchema = mongoose.Schema({
 
 PitstopSchema.index({ "loc": "2dsphere" });
 
-const Pitstop = module.exports = mongoose.model('Pitstop', PitstopSchema);
+export const Pitstop = model('Pitstop', PitstopSchema);
 
