@@ -2,4 +2,3 @@ node_modules
 ./src/config.json
 .prettierrc.js
 .dist/
-./src/firebase-admin.json
