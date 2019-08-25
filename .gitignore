@@ -1,5 +1,5 @@
 node_modules
-./src/config.json
+/src/config.json
 .prettierrc.js
 .dist/
-./src/firebase-admin.json
+/src/firebase-admin.json
