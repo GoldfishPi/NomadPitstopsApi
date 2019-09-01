@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import { ImageSchema } from "./image";
 
 const PitstopSchema = new Schema({
     name: {
@@ -24,6 +25,10 @@ const PitstopSchema = new Schema({
     loc: {
         type: { type: String },
         coordinates: [Number],
+    },
+    images: {
+        type: ImageSchema,
+        require:false
     }
 });
 

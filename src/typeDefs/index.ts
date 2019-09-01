@@ -6,7 +6,7 @@ import { GraphQLInt, GraphQLID, GraphQLString } from "graphql/type/scalars";
 import { firebaseAdmin } from "../helpers/firebase";
 import { CommentType } from "./comment";
 import { CommentModel } from "../models/comments";
-import { addPitstopComment } from "../resolvers/pitstop";
+import { addPitstopComment, addPitstopImage } from "../resolvers/pitstop";
 import { UserType } from "./user";
 
 
@@ -28,7 +28,6 @@ export const RootQuery = new GraphQLObjectType({
                 token: { type: GraphQLString },
             },
             async resolve(parent, args, context, {rootValue}) {
-                console.log('params lol', context);
                 if(args.token) {
                     const valid = await firebaseAdmin.auth()
                         .verifyIdToken(args.token);
@@ -36,6 +35,7 @@ export const RootQuery = new GraphQLObjectType({
                     console.log('valid?', valid);
                 }
                 const pitstop = await Pitstop.findById(args.id);
+                console.log('pitsop', pitstop);
                 return pitstop;
             }
         },
@@ -87,6 +87,15 @@ export const RootMutations = new GraphQLObjectType({
                 text: { type: GraphQLString },
             },
             resolve: addPitstopComment
+        },
+        addPitstopImage: {
+            name: 'addPitstopImage',
+            args: {
+                linkedId: { type: GraphQLString },
+                image: { type: GraphQLString }
+            },
+            type: new GraphQLList(GraphQLString),
+            resolve: addPitstopImage
         }
     }
 });

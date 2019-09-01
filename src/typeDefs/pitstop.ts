@@ -3,6 +3,7 @@ import { GraphQLString, GraphQLID, GraphQLFloat, GraphQLInt } from "graphql/type
 import { GraphQLList } from "graphql/type/definition";
 import { CommentModel } from "../models/comments";
 import { CommentType } from "./comment";
+import { getPitstopImages } from './../resolvers/pitstop';
 
 const PitstopMutations = new GraphQLObjectType({
     name:'Mutation',
@@ -30,6 +31,11 @@ export const PitstopType = new GraphQLObjectType({
                     });
                 return comments ? comments : [];
             }
+        },
+        images: {
+            name:'Images',
+            type: new GraphQLList(GraphQLString),
+            resolve: getPitstopImages
         }
     
     },
