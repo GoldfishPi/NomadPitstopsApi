@@ -1,6 +1,7 @@
 import { firebaseAdmin } from "./../helpers/firebase";
 import { CommentModel } from "./../models/comments";
 import { Pitstop } from "../models/pitstop";
+import fs from "fs";
 
 export const getPitstops = async (parent:any, args:any) => {
     return await Pitstop.find({});
@@ -65,25 +66,21 @@ export const getPitstopImages = async (parent:any, args:any) => {
 
 }
 
-export const addPitstopImage = async (parent:any, { image, linkedId }:any) => {
-    const { stream, filename, mimetype, encoding } = await image;
-    console.log('name', filename);
+export const addPitstopImage = async (parent:any, { image, id }:any) => {
+
+    const { createReadStream, filename, mimetype, encoding } = await image;
+
+    console.log('name', filename, mimetype, encoding);
+
     const url = `gs://nomad-pit-stops.appspot.com/`;
 
     const bucket = firebaseAdmin
         .storage()
         .bucket(url);
-    return;
-    const pitstop = await Pitstop
-        .findById(linkedId)
-        .update({
-            images: [
-                {
-                    uid:'lol',
-                    link:'moose',
-                }
-            ]
-        })
-    console.log('pitstop', pitstop);
+
+    const stream = createReadStream()
+        .pipe(fs.createWriteStream(`./${filename}`))
+    //bucket.upload('./package.json');
+
 }
 
