@@ -1,10 +1,9 @@
 import { GraphQLObjectType } from "graphql";
 import { GraphQLString, GraphQLID } from "graphql/type/scalars";
 
-export const UserType = new GraphQLObjectType({
-    name:'UserType',
-    fields: {
-        displayName: { type: GraphQLString },
-        uid: { type: GraphQLID }
+export const UserType = `
+    type User {
+        displayName: String
+        uid: String
     }
-});
+`;
