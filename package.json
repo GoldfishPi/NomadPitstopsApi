@@ -30,6 +30,7 @@
     "@types/mongoose": "^5.5.13",
     "@types/node": "^12.7.2",
     "apollo-server": "^2.9.3",
+    "aws-s3": "^2.0.5",
     "base64-img": "^1.0.4",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",

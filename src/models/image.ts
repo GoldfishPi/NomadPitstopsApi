@@ -1,4 +1,4 @@
-import { model, Schema } from 'mongoose';
+import { model, Schema, Types } from 'mongoose';
 
 export const ImageSchema = new Schema({
     uid: {
@@ -10,4 +10,6 @@ export const ImageSchema = new Schema({
         require:true,
     }
 });
+
+export const PitstopImageModel = model('pitstop-images', ImageSchema);
 

@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, model, Types } from "mongoose";
 import { ImageSchema } from "./image";
 
 const PitstopSchema = new Schema({
@@ -23,11 +23,14 @@ const PitstopSchema = new Schema({
         require: true
     },
     loc: {
-        type: { type: String },
+        type: [{ type: String }],
         coordinates: [Number],
     },
     images: {
-        type: ImageSchema,
+        type: [{
+            type:Schema.Types.ObjectId,
+            ref:'pitstop-images',
+        }],
         require:false
     }
 });

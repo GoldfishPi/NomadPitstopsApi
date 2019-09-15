@@ -5,7 +5,8 @@ export const getComments = async () => {
     return await CommentModel.find({}); 
 }
 
-export const getComment = async (parent:any, args:any) => {
+export const getComment = async (parent:any, args:any, context:any) => {
+    console.log('context', context.user);
     return await CommentModel.findById(args.id); 
 }
 

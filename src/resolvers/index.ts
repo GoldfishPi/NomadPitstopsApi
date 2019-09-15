@@ -13,7 +13,6 @@ export const resolvers = {
     },
     Pitstop: {
         comments: getPitstopComments,
-        images: getPitstopImages,
     },
     Comment: {
         user: getCommentUser

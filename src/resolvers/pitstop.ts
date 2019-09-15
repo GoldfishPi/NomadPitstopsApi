@@ -1,24 +1,28 @@
 import { firebaseAdmin } from "./../helpers/firebase";
 import { CommentModel } from "./../models/comments";
 import { Pitstop } from "../models/pitstop";
-import fs from "fs";
+import { PitstopImageModel } from "../models/image";
 
-export const getPitstops = async (parent:any, args:any) => {
+export const getPitstops = async () => {
     return await Pitstop.find({});
 }
 
 export const getPitstop = async (parent:any, args:any) => {
-    return await Pitstop.findById(args.id);
+    const ps =  await Pitstop
+        .findById(args.id)
+        .populate('images')
+    console.log('gotten ps', ps);
+    return ps;
 }
 
-export const getPitstopComments = async (parent:any, args:any) => {
+export const getPitstopComments = async (parent:any) => {
     return await CommentModel.find({
         linkedId:parent.id
     })
 }
 
 export const addPitstopComment = async (parent:any, args:any) => {
-
+    
     const user = await firebaseAdmin
         .auth()
         .verifyIdToken(args.token);
@@ -38,49 +42,68 @@ export const addPitstopComment = async (parent:any, args:any) => {
 }
 
 export const getPitstopImages = async (parent:any, args:any) => {
-    console.log('parent id', parent.id);
-    const url = `gs://nomad-pit-stops.appspot.com/`;
-
-    const bucket = firebaseAdmin
-        .storage()
-        .bucket(url);
-
-    const files = await bucket
-        .getFiles({
-            prefix:`pitstops/${parent.id}/`
-        });
-
-    const signedUrlsPromise = files[0].map(async file => {
-        console.log('signing', file.metadata);
-        const signedFile = await bucket.file(file.name).getSignedUrl({
-            action:'read',
-            expires:'03-01-2500'
-        });
-        return signedFile[0];
+    const ps = await Pitstop
+        .findById(parent.id)
+        .populate('images')
+    return;
+    const images =  await PitstopImageModel.find({
+        linkedId:parent.id
     });
-
-    const signedUrls = await Promise.all(signedUrlsPromise);
-    console.log('urls lol', signedUrls);
-
-    return signedUrls;
-
+    return images.map(image => image.get('link'));
 }
 
-export const addPitstopImage = async (parent:any, { image, id }:any) => {
+export const addPitstopImage = async (parent:any, { image, id }:any, {user}:any) => {
+
+    if(!user)return [];
 
     const { createReadStream, filename, mimetype, encoding } = await image;
-
-    console.log('name', filename, mimetype, encoding);
-
     const url = `gs://nomad-pit-stops.appspot.com/`;
 
     const bucket = firebaseAdmin
         .storage()
         .bucket(url);
 
-    const stream = createReadStream()
-        .pipe(fs.createWriteStream(`./${filename}`))
-    //bucket.upload('./package.json');
+    const path = `pitstops/${id}/${Date.now()}-${filename}`;
 
+    await new Promise(res => {
+        createReadStream()
+            .pipe(bucket.file(path).createWriteStream({
+                contentType:mimetype,
+                public:true,
+                metadata: {
+                    custom: 'metadata'
+                }
+            }))
+            .on('close', res)
+            .on('finish', res)
+    });
+
+    const sig = await bucket.file(path).getSignedUrl({
+        expires:'2400',
+        action:'read',
+    });
+
+    const psImage = await PitstopImageModel.create({
+        uid: user.user_id,
+        link: sig[0],
+    });
+
+    console.log('ps image', psImage.get('id'));
+    console.log('pitstop id', id);
+    const ps:any = await Pitstop.findById(id);
+    console.log('found ps', ps);
+    
+    const images = ps.images || [];
+    const newImages = [
+        ...images,
+        psImage.get('id')
+    ];
+    await Pitstop.findById(id)
+        .update({
+            images:newImages
+        });
+    console.log('done');
+
+    return;
 }
 

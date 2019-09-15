@@ -9,7 +9,21 @@ export const PitstopType = `
         longitude: Float
         latitude: Float
         comments: [Comment]
-        images: [String]
+        images: [Image]
     }
+`;
+
+export const PitstopMutations = `
+        addPitstop(
+            title: String!
+            description: String!
+            wifi: Int!
+            longitude: Float!
+            latitude: Float!
+        ): Pitstop
+        addPitstopImage(
+            id: ID!
+            image: Upload!
+        ): Pitstop
 `;
 

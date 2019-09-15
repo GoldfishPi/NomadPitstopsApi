@@ -1,11 +1,13 @@
-import { PitstopType } from "./pitstop";
+import { PitstopType,PitstopMutations } from "./pitstop";
 import { CommentType } from "./comment";
 import { UserType } from "./user";
+import { ImageType } from "./image";
 
 const { gql } = require('apollo-server');
 
 export const typeDefs = gql`
     ${UserType}
+    ${ImageType}
     ${CommentType}
     ${PitstopType}
     type Query {
@@ -15,16 +17,6 @@ export const typeDefs = gql`
         Comment(id:ID!): Comment
     }
     type Mutation {
-        addPitstop(
-            title: String!
-            description: String!
-            wifi: Int!
-            longitude: Float!
-            latitude: Float!
-        ): Pitstop
-        addPitstopImage(
-            id: ID!
-            image: Upload!
-        ): Pitstop
+        ${PitstopMutations}
     }
 `;
