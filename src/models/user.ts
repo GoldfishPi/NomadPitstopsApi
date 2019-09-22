@@ -1,14 +1,13 @@
-const mongoose = require('mongoose');
-
-const UserSchema = mongoose.Schema({
+import { Schema, model} from "mongoose";
+const UserSchema = new Schema({
     username: { type: String, unique: true, required: true },
-    hash: { type: String, required: true },
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
     createdDate: { type: Date, default: Date.now },
-    access: { type: String, default: 'USER' }
+    access: { type: String, default: 'USER' },
+    uid: { type:String, require:true }
 });
 
 UserSchema.set('toJSON', { virtuals: true });
 
-module.exports = mongoose.model('User', UserSchema);
+export const UserModel = model('users', UserSchema);

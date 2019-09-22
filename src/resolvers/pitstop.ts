@@ -4,14 +4,14 @@ import { Pitstop } from "../models/pitstop";
 import { PitstopImageModel } from "../models/image";
 
 export const getPitstops = async () => {
-    return await Pitstop.find({});
+    return await Pitstop.find({})
+        .populate('images');
 }
 
 export const getPitstop = async (parent:any, args:any) => {
     const ps =  await Pitstop
         .findById(args.id)
         .populate('images')
-    console.log('gotten ps', ps);
     return ps;
 }
 

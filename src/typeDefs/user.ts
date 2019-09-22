@@ -3,14 +3,17 @@ import { GraphQLString, GraphQLID } from "graphql/type/scalars";
 
 export const UserType = `
     type User {
-        displayName: String
+        username: String
         id: ID
     }
 `;
 
 export const UserMutations = `
     addUser(
-        email: String,
-        uid: String
+        email: String!
+        uid: String!
+        firstName: String!
+        lastName: String!
+        username:String!
     ): Boolean
 `;

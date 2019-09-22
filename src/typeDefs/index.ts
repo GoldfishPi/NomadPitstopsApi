@@ -1,6 +1,6 @@
 import { PitstopType,PitstopMutations } from "./pitstop";
 import { CommentType } from "./comment";
-import { UserType } from "./user";
+import { UserType, UserMutations } from "./user";
 import { ImageType } from "./image";
 
 const { gql } = require('apollo-server');
@@ -18,5 +18,6 @@ export const typeDefs = gql`
     }
     type Mutation {
         ${PitstopMutations}
+        ${UserMutations}
     }
 `;
