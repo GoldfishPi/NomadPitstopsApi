@@ -8,6 +8,7 @@ export const PitstopType = `
         notes: String
         longitude: Float
         latitude: Float
+        connection:Int
         comments: [Comment]
         images: [Image]
     }
@@ -15,11 +16,11 @@ export const PitstopType = `
 
 export const PitstopMutations = `
         addPitstop(
-            title: String!
-            description: String!
-            wifi: Int!
+            name: String!
+            notes: String!
             longitude: Float!
             latitude: Float!
+            connection: Int!
         ): Pitstop
         addPitstopImage(
             id: ID!

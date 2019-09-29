@@ -1,4 +1,4 @@
-import { getPitstops, getPitstop, getPitstopComments, getPitstopImages, addPitstopImage } from "./pitstop";
+import { getPitstops, getPitstop, getPitstopComments, getPitstopImages, addPitstopImage, addPitstop } from "./pitstop";
 import { getComments,getComment, getCommentUser } from "./comment";
 import { addUser } from "./user";
 export const resolvers = {
@@ -9,7 +9,7 @@ export const resolvers = {
         Comment: getComment,
     },
     Mutation: {
-        addPitstop: () => false,
+        addPitstop: addPitstop,
         addPitstopImage: addPitstopImage,
         addUser: addUser
     },
