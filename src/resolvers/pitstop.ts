@@ -4,8 +4,12 @@ import { Pitstop } from "../models/pitstop";
 import { PitstopImageModel } from "../models/image";
 
 export const getPitstops = async () => {
-    return await Pitstop.find({})
-        .populate('images');
+    const ps = await Pitstop.find({})
+        .populate('images')
+    return ps.map(p => ({
+        ...p.toJSON(),
+        images: p.get('images') ? p.get('images') : []
+    }));
 }
 
 export const getPitstop = async (parent:any, args:any) => {
