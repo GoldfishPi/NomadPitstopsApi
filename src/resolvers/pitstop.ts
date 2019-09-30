@@ -8,6 +8,7 @@ export const getPitstops = async () => {
         .populate('images')
     return ps.map(p => ({
         ...p.toJSON(),
+        id:p.id,
         images: p.get('images') ? p.get('images') : []
     }));
 }
