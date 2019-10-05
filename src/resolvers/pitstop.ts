@@ -113,14 +113,18 @@ export const addPitstopImage = async (parent:any, { image, id }:any, {user}:any)
 }
 
 export const addPitstop = async (parent:any, args:any, {user}:any) => {
-    if(!user)return new Error('Bad Auth');
+    if(!user)return;
     const { name, notes, connection, longitude, latitude } = args;
     const ps = await Pitstop.create({
         name,
         notes,
         connection,
         longitude,
-        latitude
+        latitude,
+        loc:{
+            type: 'Point',
+            coordinates: [longitude, latitude]
+        }
     });
     return ps.toJSON();
 }

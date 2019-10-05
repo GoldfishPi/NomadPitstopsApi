@@ -23,7 +23,7 @@ const PitstopSchema = new Schema({
         require: true
     },
     loc: {
-        type: [{ type: String }],
+        type: { type: String },
         coordinates: [Number],
     },
     images: {
