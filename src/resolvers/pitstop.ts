@@ -2,6 +2,7 @@ import { firebaseAdmin } from "./../helpers/firebase";
 import { CommentModel } from "./../models/comments";
 import { Pitstop } from "../models/pitstop";
 import { PitstopImageModel } from "../models/image";
+import axios from "axios";
 
 export const getPitstops = async () => {
     const ps = await Pitstop.find({})
@@ -125,6 +126,7 @@ export const addPitstop = async (parent:any, args:any, {user}:any) => {
             coordinates: [longitude, latitude]
         }
     });
+    axios.post('https://api.netlify.com/build_hooks/5dba2f194119749b9c512ebe');
     return ps.toJSON();
 }
 
