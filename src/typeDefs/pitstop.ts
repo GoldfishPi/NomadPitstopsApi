@@ -15,6 +15,7 @@ export const PitstopType = `
 `;
 
 export const PitstopMutations = `
+
         addPitstop(
             name: String!
             notes: String!
@@ -22,9 +23,15 @@ export const PitstopMutations = `
             latitude: Float!
             connection: Int!
         ): Pitstop
+
         addPitstopImage(
             id: ID!
             image: Upload!
         ): Pitstop
+
+        addPitstopComment(
+            id:ID!
+            text:String!,
+        ): Comment
 `;
 

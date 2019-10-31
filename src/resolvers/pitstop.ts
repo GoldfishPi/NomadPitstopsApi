@@ -21,26 +21,25 @@ export const getPitstop = async (parent:any, args:any) => {
 }
 
 export const getPitstopComments = async (parent:any) => {
-    return await CommentModel.find({
-        linkedId:parent.id
-    })
+    return await CommentModel
+        .find({
+            linkedId:parent.id,
+        })
+        .sort({createdAt:'desc'});
 }
 
-export const addPitstopComment = async (parent:any, args:any) => {
-    
-    const user = await firebaseAdmin
-        .auth()
-        .verifyIdToken(args.token);
+export const addPitstopComment = async (parent:any, args:any, {user}:any) => {
 
+    console.log('text', args.text);
     if(!user) {
         return;
     }
 
     const comment = await CommentModel.create({
         type:'pitstop',
-        linkedId:args.linkedId,
+        linkedId:args.id,
         text:args.text,
-        uid:user.uid
+        uid:user.uid,
     });
 
     return comment;
@@ -97,7 +96,7 @@ export const addPitstopImage = async (parent:any, { image, id }:any, {user}:any)
     console.log('pitstop id', id);
     const ps:any = await Pitstop.findById(id);
     console.log('found ps', ps);
-    
+
     const images = ps.images || [];
     const newImages = [
         ...images,
