@@ -49,6 +49,7 @@
     "typescript": "^3.5.3"
   },
   "devDependencies": {
+    "husky": "^3.0.9",
     "nodemon": "^1.19.1"
   }
 }
