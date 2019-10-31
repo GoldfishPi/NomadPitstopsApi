@@ -15,6 +15,7 @@ export const typeDefs = gql`
         Pitstops:[Pitstop]
         Comments: [Comment]
         Comment(id:ID!): Comment
+        Users: [User]
     }
     type Mutation {
         ${PitstopMutations}

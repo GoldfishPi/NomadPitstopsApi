@@ -1,5 +1,6 @@
 import { CommentModel } from "./../models/comments";
 import { firebaseAdmin } from "../helpers/firebase";
+import { UserModel } from "../models/user";
 
 export const getComments = async () => {
     return await CommentModel
@@ -15,8 +16,8 @@ export const getComment = async (parent:any, args:any, context:any) => {
         .sort({createdAt:'desc'})
 }
 
-export const getCommentUser = (parent:any, args:any) => {
-    return firebaseAdmin
-        .auth()
-        .getUser(parent.uid)    
+export const getCommentUser = async (parent:any, args:any) => {
+    console.log('parent id', parent.uid);
+    return await UserModel
+        .findOne({ uid:parent.uid });
 }

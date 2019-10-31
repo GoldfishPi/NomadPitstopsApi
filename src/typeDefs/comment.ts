@@ -11,5 +11,6 @@ export const CommentType = `
         linkedId: ID
         text: String
         user:User
+        createdAt:String
     }
 `;
