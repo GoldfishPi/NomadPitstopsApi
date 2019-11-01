@@ -1,37 +1,30 @@
+import { ObjectType, Field, ID, Float, Int } from "type-graphql";
+import { CommentType } from "./comment";
+import { ImageType } from "./image";
 
-const { gql } = require('apollo-server');
+@ObjectType()
+export class Pitstop {
+    @Field(() => ID)
+    id:string;
+    
+    @Field(() => String)
+    name:string;
 
-export const PitstopType = `
-    type Pitstop {
-        id: String
-        name: String
-        notes: String
-        longitude: Float
-        latitude: Float
-        connection:Int
-        comments: [Comment]
-        images: [Image]
-    }
-`;
+    @Field(() => String)
+    notes:string;
 
-export const PitstopMutations = `
+    @Field(() =>  Float)
+    longitude:string;
 
-        addPitstop(
-            name: String!
-            notes: String!
-            longitude: Float!
-            latitude: Float!
-            connection: Int!
-        ): Pitstop
+    @Field(() =>  Float)
+    latitude:number;
 
-        addPitstopImage(
-            id: ID!
-            image: Upload!
-        ): Pitstop
+    @Field(() =>  Int)
+    connection:number;
 
-        addPitstopComment(
-            id:ID!
-            text:String!,
-        ): Comment
-`;
+    @Field(() => [CommentType])
+    comments: CommentType[]
 
+    @Field(() => [ImageType])
+    images: ImageType[]
+}

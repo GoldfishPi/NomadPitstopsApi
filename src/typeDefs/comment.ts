@@ -1,16 +1,25 @@
-import { GraphQLObjectType } from "graphql";
-import { GraphQLString, GraphQLID, GraphQLFloat, GraphQLInt } from "graphql/type/scalars";
-import { UserType } from "./user";
-import { firebaseAdmin } from "../helpers/firebase";
+import { ObjectType, Field, ID } from "type-graphql";
+import { User } from "./user";
+@ObjectType()
+export class CommentType {
+    @Field(() => ID)
+    id:string;
 
-export const CommentType = `
-    type Comment {
-        id:ID
-        type:String
-        uid:ID
-        linkedId: ID
-        text: String
-        user:User
-        createdAt:String
-    }
-`;
+    @Field(() => ID)
+    uid:string;
+
+    @Field(() => ID)
+    linkedId:string;
+
+    @Field(() => String)
+    type:string;
+
+    @Field(() => String)
+    text:string;
+
+    @Field(() => User)
+    user: User
+
+    @Field(() => Date)
+    createdAt:Date
+}

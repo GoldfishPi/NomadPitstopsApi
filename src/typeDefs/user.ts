@@ -1,5 +1,13 @@
-import { GraphQLObjectType } from "graphql";
-import { GraphQLString, GraphQLID } from "graphql/type/scalars";
+
+import { ObjectType, Field, ID } from "type-graphql"
+
+@ObjectType()
+export class User {
+    @Field(() => String)
+    username:string;
+    @Field(() => ID)
+    id:string;
+}
 
 export const UserType = `
     type User {

@@ -37,5 +37,5 @@ const PitstopSchema = new Schema({
 
 PitstopSchema.index({ "loc": "2dsphere" });
 
-export const Pitstop = model('Pitstop', PitstopSchema);
+export const PitstopModel = model('Pitstop', PitstopSchema);
 
