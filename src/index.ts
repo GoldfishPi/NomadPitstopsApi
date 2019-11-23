@@ -6,6 +6,7 @@ import { buildSchema } from "type-graphql";
 import {  GlobalUserResolver } from "./resolvers/user";
 import { GlobalPitstopResolver, PitstopResolver } from "./resolvers/pitstop";
 import { GlobalCommentResolver, CommentResolver } from "./resolvers/comment";
+import { ProfileResolver } from "./resolvers/Profile";
 const express = require('express');
 
 const bootstrap = async () => {
@@ -18,6 +19,7 @@ const bootstrap = async () => {
             GlobalCommentResolver,
             CommentResolver,
             PitstopResolver,
+            ProfileResolver,
         ]
     });
     const server = new ApolloServer({

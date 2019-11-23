@@ -152,7 +152,6 @@ export class PitstopResolver {
     async comments(
         @Root() pitstop: Pitstop
     ) {
-        console.log('linkedid???', pitstop.id);
         return await CommentModel
             .find({
                 linkedId:pitstop.id
